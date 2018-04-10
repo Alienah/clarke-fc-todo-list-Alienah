@@ -1,6 +1,10 @@
 'use strict';
 
 const tasksHeader = document.querySelector('.tasks__header');
+const btnAddNew = document.querySelector('.btn--add-new');
+const inputTask = document.querySelector('.input-task');
+let inputTaskValue;
+const tasksList = document.querySelector('.tasks');
 
 const paintDate = () => {
   const months = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -19,3 +23,11 @@ const paintDate = () => {
 }
 
 paintDate();
+
+const handleInputTask = () => {
+  inputTaskValue = inputTask.value;
+  const taskItem = `<li class="task-item">${inputTaskValue}</li>`;
+  tasksList.insertAdjacentHTML('beforeend', taskItem);
+}
+
+btnAddNew.addEventListener('click', handleInputTask);
