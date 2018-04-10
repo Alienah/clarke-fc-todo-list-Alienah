@@ -30,7 +30,7 @@ paintDate();
 
 const paintList = (text) => {
   const taskItem = `<li class="task-item"><input type="checkbox">${text}</li>`;
-  tasksListContainer.insertAdjacentHTML('beforeend', taskItem);
+  tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
 }
 
 const handleInputTask = (text) => {
