@@ -13,9 +13,11 @@ window.onload = function() {
   const taskItemContainer = document.querySelector('.task-item');
   let tasksArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
+  //Set and Get data from localStorage
   localStorage.setItem('tasks', JSON.stringify(tasksArray) );
   const dataFromStorage = JSON.parse(localStorage.getItem('tasks'));
 
+  //Get Date
   const paintDate = () => {
     const months = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     const daysWeek = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
@@ -32,6 +34,7 @@ window.onload = function() {
     tasksHeader.insertAdjacentHTML('beforeend', buildDate);
   }
 
+  //Manage elements clicked
   const handleCheckBox = (e) => {
     handleTasksDone(e.target);
   }
@@ -43,31 +46,33 @@ window.onload = function() {
       e.target.children[0].checked = true;
     }
     handleTasksDone(e.target.children[0]);
-
   }
 
+  //Change visualization of item clicked and its storage
   const handleTasksDone = (select) => {
     const targetParent = select.parentElement;
     const selectId = targetParent.getAttribute('id');
-    console.log(selectId);
-    if (select.checked == true) {
-      targetParent.classList.add('cross');
-      tasksListContainer.append(targetParent);
-      for (var i = 0; i < tasksArray.length; i++) {
+    for (var i = 0; i < tasksArray.length; i++) {
+      if (select.checked == true) {
+        targetParent.classList.add('cross');
+        tasksListContainer.append(targetParent);
         if (selectId == tasksArray[i].id) {
           tasksArray[i].checkValue = true;
           localStorage.setItem('tasks', JSON.stringify(tasksArray) );
         }
       }
-
-      console.log(tasksArray);
-    }
-    else {
-      targetParent.classList.remove('cross');
-      tasksListContainer.prepend(targetParent);
+      else {
+        targetParent.classList.remove('cross');
+        tasksListContainer.prepend(targetParent);
+        if (selectId == tasksArray[i].id) {
+          tasksArray[i].checkValue = false;
+          localStorage.setItem('tasks', JSON.stringify(tasksArray) );
+        }
+      }
     }
   }
 
+  //Set onclick functions in elements created later
   const setEvent = () => {
     const checkboxContainer = document.querySelectorAll('.checkbox');
     const allTaskContainer = document.querySelectorAll('.task-item')
@@ -79,13 +84,15 @@ window.onload = function() {
   setEvent();
   paintDate();
 
+  //Paint Tasks function definition
   const paintList = (text, id) => {
     const taskItem = `<li class="task-item" id="${id}"><input type="checkbox" class="checkbox">${text}</li>`;
     tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
     setEvent();
   };
 
-  const handleInputTask = (text) => {
+  //Add new Task
+  const handleInsertTask = (text) => {
     inputTaskValue = {
       'text': inputTask.value,
       'checkValue': false
@@ -97,15 +104,19 @@ window.onload = function() {
     }
     localStorage.setItem('tasks', JSON.stringify(tasksArray) );
   }
-  btnAddNew.addEventListener('click', handleInputTask);
+  btnAddNew.addEventListener('click', handleInsertTask);
 
-  dataFromStorage.map(task => {
-    paintList(task.text, task.id);
-    // function check = (valueStorage) => {
-    //   if (task.checkValue == false) {
-    //     task.checkValue == true
-    //   }
-    // }
-  })
-
+  //Manage data from Storage
+  const paintTasksFromStorage = () => {
+    dataFromStorage.map(task => {
+      paintList(task.text, task.id);
+      if (task.checkValue == true) {
+        const idToCompare = document.getElementById(`${task.id}`);
+        idToCompare.children[0].checked = true;
+        idToCompare.classList.add('cross');
+        tasksListContainer.append(idToCompare);
+      }
+    })
+  }
+  paintTasksFromStorage();
 }
