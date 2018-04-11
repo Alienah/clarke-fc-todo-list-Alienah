@@ -4,14 +4,17 @@ window.onload = function() {
   const tasksHeader = document.querySelector('.tasks__header');
   const btnAddNew = document.querySelector('.btn--add-new');
   const inputTask = document.querySelector('.input-task');
-  let inputTaskValue;
+  let inputTaskValue = {
+    'text': '',
+    'checkValue': false,
+    'id': ''
+  };
   const tasksListContainer = document.querySelector('.tasks');
-  // const checkboxContainer = document.querySelectorAll('.checkbox');
   const taskItemContainer = document.querySelector('.task-item');
   let tasksArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
   localStorage.setItem('tasks', JSON.stringify(tasksArray) );
-  const data = JSON.parse(localStorage.getItem('tasks'));
+  const dataFromStorage = JSON.parse(localStorage.getItem('tasks'));
 
   const paintDate = () => {
     const months = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -40,14 +43,24 @@ window.onload = function() {
       e.target.children[0].checked = true;
     }
     handleTasksDone(e.target.children[0]);
+
   }
 
   const handleTasksDone = (select) => {
     const targetParent = select.parentElement;
+    const selectId = targetParent.getAttribute('id');
+    console.log(selectId);
     if (select.checked == true) {
       targetParent.classList.add('cross');
       tasksListContainer.append(targetParent);
-      console.log(targetParent);
+      // tasksArray[].push(inputTaskValue);
+      // for (var i = 0; i < tasksArray.length; i++) {
+      //   tasksArray[i].id = i
+      // }
+      // localStorage.setItem('tasks', JSON.stringify(tasksArray) );
+      // // inputTaskValue.checkValue = true;
+      // // console.log(targetParent.innerText);
+      console.log(tasksArray);
     }
     else {
       targetParent.classList.remove('cross');
@@ -66,22 +79,33 @@ window.onload = function() {
   setEvent();
   paintDate();
 
-  const paintList = (text) => {
-    const taskItem = `<li class="task-item"><input type="checkbox" class="checkbox">${text}</li>`;
+  const paintList = (text, id) => {
+    const taskItem = `<li class="task-item" id="${id}"><input type="checkbox" class="checkbox">${text}</li>`;
     tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
     setEvent();
   };
 
   const handleInputTask = (text) => {
-    inputTaskValue = inputTask.value;
-    paintList(inputTaskValue);
+    inputTaskValue = {
+      'text': inputTask.value,
+      'checkValue': false
+    };
+    paintList(inputTaskValue.text);
     tasksArray.push(inputTaskValue);
+    for (var i = 0; i < tasksArray.length; i++) {
+      tasksArray[i].id = i
+    }
     localStorage.setItem('tasks', JSON.stringify(tasksArray) );
   }
   btnAddNew.addEventListener('click', handleInputTask);
 
-  data.forEach(task => {
-    paintList(task);
-  });
+  dataFromStorage.map(task => {
+    paintList(task.text, task.id);
+    // function check = (valueStorage) => {
+    //   if (task.checkValue == false) {
+    //     task.checkValue == true
+    //   }
+    // }
+  })
 
 }
