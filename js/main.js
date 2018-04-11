@@ -53,13 +53,13 @@ window.onload = function() {
     if (select.checked == true) {
       targetParent.classList.add('cross');
       tasksListContainer.append(targetParent);
-      // tasksArray[].push(inputTaskValue);
-      // for (var i = 0; i < tasksArray.length; i++) {
-      //   tasksArray[i].id = i
-      // }
-      // localStorage.setItem('tasks', JSON.stringify(tasksArray) );
-      // // inputTaskValue.checkValue = true;
-      // // console.log(targetParent.innerText);
+      for (var i = 0; i < tasksArray.length; i++) {
+        if (selectId == tasksArray[i].id) {
+          tasksArray[i].checkValue = true;
+          localStorage.setItem('tasks', JSON.stringify(tasksArray) );
+        }
+      }
+
       console.log(tasksArray);
     }
     else {
