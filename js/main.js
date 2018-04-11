@@ -28,37 +28,9 @@ window.onload = function() {
 
     tasksHeader.insertAdjacentHTML('beforeend', buildDate);
   }
-  paintDate();
 
-  const paintList = (text) => {
-    const taskItem = `<li class="task-item"><input type="checkbox" class="checkbox">${text}</li>`;
-    tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
-  };
-
-  const handleInputTask = (text) => {
-    inputTaskValue = inputTask.value;
-    paintList(inputTaskValue);
-    tasksArray.push(inputTaskValue);
-    localStorage.setItem('tasks', JSON.stringify(tasksArray) );
-
-  }
-  btnAddNew.addEventListener('click', handleInputTask);
-
-  data.forEach(task => {
-    paintList(task);
-  });
-
-  const handleCross = (select) => {
-    const targetParent = select.parentElement;
-    if (select.checked == true) {
-      targetParent.classList.add('cross');
-    }
-    else {
-      targetParent.classList.remove('cross');
-    }
-  }
   const handleCheckBox = (e) => {
-    handleCross(e.target);
+    handleTasksDone(e.target);
   }
 
   const handleTaskLi = (e) => {
@@ -67,7 +39,20 @@ window.onload = function() {
     } else {
       e.target.children[0].checked = true;
     }
-    handleCross(e.target.children[0]);
+    handleTasksDone(e.target.children[0]);
+  }
+
+  const handleTasksDone = (select) => {
+    const targetParent = select.parentElement;
+    if (select.checked == true) {
+      targetParent.classList.add('cross');
+      tasksListContainer.append(targetParent);
+      console.log(targetParent);
+    }
+    else {
+      targetParent.classList.remove('cross');
+      tasksListContainer.prepend(targetParent);
+    }
   }
 
   const setEvent = () => {
@@ -79,4 +64,24 @@ window.onload = function() {
     }
   }
   setEvent();
+  paintDate();
+
+  const paintList = (text) => {
+    const taskItem = `<li class="task-item"><input type="checkbox" class="checkbox">${text}</li>`;
+    tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
+    setEvent();
+  };
+
+  const handleInputTask = (text) => {
+    inputTaskValue = inputTask.value;
+    paintList(inputTaskValue);
+    tasksArray.push(inputTaskValue);
+    localStorage.setItem('tasks', JSON.stringify(tasksArray) );
+  }
+  btnAddNew.addEventListener('click', handleInputTask);
+
+  data.forEach(task => {
+    paintList(task);
+  });
+
 }
