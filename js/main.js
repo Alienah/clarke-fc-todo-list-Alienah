@@ -2,7 +2,6 @@
 
 window.onload = function() {
   const tasksHeader = document.querySelector('.tasks__header');
-  const btnAddNew = document.querySelector('.btn--add-new');
   const inputTask = document.querySelector('.input-task');
   let inputTaskValue = {
     'text': '',
@@ -11,6 +10,9 @@ window.onload = function() {
   };
   const tasksListContainer = document.querySelector('.tasks');
   const taskItemContainer = document.querySelector('.task-item');
+  const btnShowAddNew = document.getElementById('btn--plus');
+  const newTaskContainer = document.getElementById('new-task__container');
+  const btnAddNew = document.querySelector('.btn--add-new');
   let tasksArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
   //Set and Get data from localStorage
@@ -103,6 +105,7 @@ window.onload = function() {
       tasksArray[i].id = i
     }
     localStorage.setItem('tasks', JSON.stringify(tasksArray) );
+    hideNewTaskContainer();
   }
   btnAddNew.addEventListener('click', handleInsertTask);
 
@@ -119,4 +122,14 @@ window.onload = function() {
     })
   }
   paintTasksFromStorage();
+
+  const showNewTaskContainer = () => {
+    newTaskContainer.classList.add('visible');
+    newTaskContainer.classList.remove('invisible');
+  }
+  btnShowAddNew.addEventListener('click', showNewTaskContainer);
+
+  const hideNewTaskContainer = () => {
+    newTaskContainer.classList.add('invisible');
+  }
 }

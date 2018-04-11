@@ -6,3 +6,9 @@
   text-decoration: line-through;
   color: darkgrey;
 }
+.visible {
+  display: block;
+}
+.invisible {
+  display: none;
+}
