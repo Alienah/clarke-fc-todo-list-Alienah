@@ -15,17 +15,13 @@ body {
   @include flexCenterCenter();
 }
 .tasks__container {
+  position: relative;
   min-height: 70vh;
   min-width: 350px;
   margin: 60px 0;
   background: $colorWhite;
   // padding: 30px 30px 15px 30px;
 }
-
-.title {
-  @include robotoBold ();
-}
-
 .tasks {
   list-style: none;
   padding: 0;
@@ -39,4 +35,14 @@ body {
 }
 .invisible {
   display: none;
+}
+.page--input-visible::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($colorWhite, 0.8);
+  z-index: 2;
 }

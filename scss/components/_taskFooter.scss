@@ -1,0 +1,46 @@
+.new-task__container {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  min-height: 25vh;
+  z-index: 3
+}
+.new-task__container--inside {
+  margin: 20px 20px 10px 20px;
+  padding: 15px 20px 15px 20px;
+  height: 23vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: $colorCianDark;
+  box-shadow: 0 0 0.5em $colorCianDark;
+  border-radius: 5px;
+}
+.input__container {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  margin-bottom: 5px;
+  color: rgba($colorWhite, 0.7);
+  font-size: 15px;
+  font-weight: lighter;
+}
+.input-task {
+  height: 30px;
+  background: inherit;
+  border: 1px solid rgba($colorWhite, 0.5);
+  border-radius: 5px;
+  color: $colorWhite;
+  box-shadow: 0 0 0.5px $colorWhite;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px;
+  &::placeholder {
+    color: rgba($colorWhite, 0.7);
+  }
+  &:focus {
+    outline-color: white;
+  }
+}

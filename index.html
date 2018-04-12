@@ -10,30 +10,25 @@
 </head>
 <body>
   <main class="main">
-    <div class="tasks__container">
+    <div class="tasks__container page--input-visible">
       <header class="tasks__header">
-        <img src="" alt="">
-        <!-- <div class="date__container">
-          <span class="date--number">9</span>
-          <div>
-            <p class="date--day-week">Lunes</p>
-            <p class="date--month-year">Abril, 2018</p>
-          </div>
-        </div> -->
+        <img class="icon--adalab" src="images/iconoAdalab.jpg" alt="logo Adalab">
       </header>
       <div class="list__container">
         <ul class="tasks">
         </ul>
       </div>
-      <div>
+      <div class="btn-plus__container invisible">
         <button type="button" class="btn--plus" id="btn--plus" name="button">+</button>
       </div>
-      <div class="" id="new-task__container">
-        <div>
-          <label for="new-task">Nueva tarea</label>
-          <input type="text" class="input-task" id="new-task" name="input-task" placeholder="Introduce tu tarea">
+      <div class="new-task__container" id="new-task__container">
+        <div class="new-task__container--inside">
+          <div class="input__container">
+            <label class="label" for="new-task">Nueva tarea</label>
+            <input type="text" class="input-task" id="new-task" name="input-task" placeholder="Introduce tu tarea">
+          </div>
+          <button type="button" class="btn--add-new"name="button">Añadir</button>
         </div>
-        <button type="button" class="btn--add-new"name="button">Añadir</button>
       </div>
     </div>
   </main>

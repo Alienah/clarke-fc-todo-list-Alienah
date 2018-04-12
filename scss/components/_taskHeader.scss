@@ -4,17 +4,26 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 15px;
+  padding: 30px 30px 20px 30px;
   border-bottom: 1px solid $colorCian;
+}
+.icon--adalab {
+  height: 45px;
+  width: 45px;
 }
 .date__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 130px;
+  min-width: 120px;
 }
 .date--number {
-  font-weight: bold;
   font-size: 40px;
-  color: $colorCian;
+  color: $colorCianDark;
+}
+.date--day-week {
+  font-weight: bold;
+}
+.date--month-year {
+  font-size: 14px;
 }
