@@ -1,0 +1,18 @@
+@mixin robotoBold () {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+@mixin robotoRegular () {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+@mixin flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin flexCenterCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

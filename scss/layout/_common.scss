@@ -1,0 +1,42 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  color: $colorDark;
+  @include robotoRegular();
+}
+.main {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 30px;
+  background: $colorCian;
+  @include flexCenterCenter();
+}
+.tasks__container {
+  min-height: 70vh;
+  min-width: 350px;
+  margin: 60px 0;
+  background: $colorWhite;
+  // padding: 30px 30px 15px 30px;
+}
+
+.title {
+  @include robotoBold ();
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+}
+.cross {
+  text-decoration: line-through;
+  color: darkgrey;
+}
+.visible {
+  display: block;
+}
+.invisible {
+  display: none;
+}
