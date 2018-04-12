@@ -198,4 +198,55 @@ body {
   outline-color: white;
 }
 
+.btn-plus__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 10vh;
+  padding: 20px 30px 20px 30px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-top: 1px solid lightgrey;
+}
+
+.btn {
+  background: inherit;
+  cursor: pointer;
+}
+
+.btn--add-new {
+  padding: 5px;
+  width: 100px;
+  border: 1.5px solid #ffffff;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 1px #ffffff;
+  box-shadow: 0 0 1px #ffffff;
+  color: #ffffff;
+  font-size: inherit;
+}
+
+.btn--plus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border: 1.5px solid #11CCB8;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 1px #11CCB8;
+  box-shadow: 0 0 1px #11CCB8;
+}
+
+.icon-plus {
+  height: 25px;
+  width: 25px;
+}
+
 /*# sourceMappingURL=main.css.map */
