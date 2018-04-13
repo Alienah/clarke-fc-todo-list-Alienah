@@ -2,6 +2,7 @@
 
 window.onload = function() {
   const tasksHeader = document.querySelector('.tasks__header');
+  const mainPage = document.querySelector('.main');
   const tasksBody = document.querySelector('.tasks__container');
   const inputTask = document.querySelector('.input-task');
   let inputTaskValue = {
@@ -143,4 +144,5 @@ window.onload = function() {
     btnShowAddNewContainer.classList.remove('invisible');
     tasksBody.classList.remove('page--input-visible');
   }
+  mainPage.addEventListener('click', hideNewTaskContainer);
 }
