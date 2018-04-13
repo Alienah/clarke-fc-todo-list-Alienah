@@ -1,7 +1,3 @@
-.bold {
-  font-weight: bold;
-}
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -36,6 +32,8 @@ body {
   min-width: 350px;
   margin: 60px 0;
   background: #ffffff;
+  -webkit-box-shadow: 0 0 1em;
+  box-shadow: 0 0 1em;
 }
 
 .visible {
@@ -116,13 +114,31 @@ body {
   padding: 0;
 }
 
+.task-item {
+  margin-bottom: 10px;
+}
+
+.task-item input[type="checkbox"] {
+  display: none;
+}
+
+.task-item input[type="checkbox"] + label {
+  display: inline-block;
+  margin-left: 20px;
+  padding-left: 35px;
+  background: url("../images/unchecked.png") no-repeat 0 0;
+  background-size: contain;
+  line-height: 24px;
+}
+
+.task-item input[type=checkbox]:checked + label {
+  background: url("../images/checked.png") no-repeat 0 0;
+  background-size: contain;
+}
+
 .cross {
   text-decoration: line-through;
   color: darkgrey;
-}
-
-input[type="checkbox"] + label {
-  border-radius: 50%;
 }
 
 .new-task__container {
