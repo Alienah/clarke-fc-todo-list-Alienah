@@ -17,7 +17,7 @@ body {
 .tasks__container {
   position: relative;
   min-height: 70vh;
-  min-width: 300px;
+  min-width: 310px;
   margin: 60px 0;
   background: $colorWhite;
   @include borderLayers ();
@@ -26,7 +26,7 @@ body {
 .layer2 {
   position: absolute;
   min-height: 68vh;
-  min-width: 310px;
+  min-width: 320px;
   background-color: $colorWhite;
   @include borderLayers ();
   z-index:2;
@@ -34,7 +34,7 @@ body {
 .layer1 {
   position: absolute;
   min-height: 66vh;
-  min-width: 320px;
+  min-width: 330px;
   background-color: $colorWhite;
   @include borderLayers ();
   z-index:1;
