@@ -47,6 +47,9 @@
 .btn-plus__container {
   display: flex;
   min-height: 10vh;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   padding: 20px 30px 20px 30px;
   justify-content: center;
   border-top: 1px solid lightgrey;
