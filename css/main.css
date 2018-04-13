@@ -38,16 +38,6 @@ body {
   background: #ffffff;
 }
 
-.tasks {
-  list-style: none;
-  padding: 0;
-}
-
-.cross {
-  text-decoration: line-through;
-  color: darkgrey;
-}
-
 .visible {
   display: block;
 }
@@ -115,6 +105,24 @@ body {
 
 .date--month-year {
   font-size: 14px;
+}
+
+.list__container {
+  padding: 20px 15px 15px 15px;
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+}
+
+.cross {
+  text-decoration: line-through;
+  color: darkgrey;
+}
+
+input[type="checkbox"] + label {
+  border-radius: 50%;
 }
 
 .new-task__container {

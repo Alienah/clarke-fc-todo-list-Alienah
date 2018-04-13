@@ -44,21 +44,24 @@ window.onload = function() {
   }
 
   const handleTaskLi = (e) => {
-    if (e.target.children[0].checked == true){
-      e.target.children[0].checked = false;
+    const targetId = e.target.getAttribute('for');
+    const targetCheck = document.getElementById(`${targetId}`);
+    if (targetCheck.value == false){
+      targetCheck.value = true;
     } else {
-      e.target.children[0].checked = true;
+      targetCheck.value = false;
     }
-    handleTasksDone(e.target.children[0]);
+    handleTasksDone(targetCheck);
   }
 
   //Change visualization of item clicked and its storage
-  const handleTasksDone = (select) => {
-    const targetParent = select.parentElement;
-    const selectId = targetParent.getAttribute('id');
+  const handleTasksDone = (selectCheckBox) => {
+    const targetParent = selectCheckBox.parentElement;
+    const selectId = selectCheckBox.getAttribute('id');
+    const selectText = document.querySelector(`.label-${selectId}`);
     for (var i = 0; i < tasksArray.length; i++) {
-      if (select.checked == true) {
-        targetParent.classList.add('cross');
+      if (selectCheckBox.checked == true) {
+        selectText.classList.add('cross');
         tasksListContainer.append(targetParent);
         if (selectId == tasksArray[i].id) {
           tasksArray[i].checkValue = true;
@@ -66,7 +69,7 @@ window.onload = function() {
         }
       }
       else {
-        targetParent.classList.remove('cross');
+        selectText.classList.remove('cross');
         tasksListContainer.prepend(targetParent);
         if (selectId == tasksArray[i].id) {
           tasksArray[i].checkValue = false;
@@ -79,7 +82,7 @@ window.onload = function() {
   //Set onclick functions in elements created later
   const setEvent = () => {
     const checkboxContainer = document.querySelectorAll('.checkbox');
-    const allTaskContainer = document.querySelectorAll('.task-item')
+    const allTaskContainer = document.querySelectorAll('.label-check')
     for (var i = 0; i < checkboxContainer.length; i++) {
       checkboxContainer[i].addEventListener('click', handleCheckBox);
       allTaskContainer[i].addEventListener('click', handleTaskLi);
@@ -90,7 +93,7 @@ window.onload = function() {
 
   //Paint Tasks function definition
   const paintList = (text, id) => {
-    const taskItem = `<li class="task-item" id="${id}"><input type="checkbox" class="checkbox">${text}</li>`;
+    const taskItem = `<li class="task-item"><input type="checkbox" class="checkbox"  id="${id}"><label class="label-check label-${id}" for="${id}">${text}</label></li>`;
     tasksListContainer.insertAdjacentHTML('afterbegin', taskItem);
     setEvent();
   };
@@ -118,9 +121,10 @@ window.onload = function() {
       paintList(task.text, task.id);
       if (task.checkValue == true) {
         const idToCompare = document.getElementById(`${task.id}`);
-        idToCompare.children[0].checked = true;
-        idToCompare.classList.add('cross');
-        tasksListContainer.append(idToCompare);
+        const labelId = document.querySelector(`.label-${task.id}`);
+        idToCompare.checked = true;
+        labelId.classList.add('cross');
+        tasksListContainer.append(idToCompare.parentElement);
       }
     })
   }
