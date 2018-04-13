@@ -17,10 +17,27 @@ body {
 .tasks__container {
   position: relative;
   min-height: 70vh;
-  min-width: 350px;
+  min-width: 300px;
   margin: 60px 0;
   background: $colorWhite;
-  box-shadow: 0 0 1em;
+  @include borderLayers ();
+  z-index: 3;
+}
+.layer2 {
+  position: absolute;
+  min-height: 68vh;
+  min-width: 310px;
+  background-color: $colorWhite;
+  @include borderLayers ();
+  z-index:2;
+}
+.layer1 {
+  position: absolute;
+  min-height: 66vh;
+  min-width: 320px;
+  background-color: $colorWhite;
+  @include borderLayers ();
+  z-index:1;
 }
 .visible {
   display: block;
@@ -36,5 +53,5 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgba($colorWhite, 0.8);
-  z-index: 2;
+  z-index: 4;
 }

@@ -17,6 +17,7 @@
     background: url('../images/unchecked.png') no-repeat 0 0;
     background-size: contain;
     line-height: 24px;
+    text-shadow: 0 0 0.5px;
   }
   input[type=checkbox]:checked + label{
     background: url('../images/checked.png') no-repeat 0 0;

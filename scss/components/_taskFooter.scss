@@ -3,7 +3,7 @@
   bottom: 15px;
   width: 100%;
   min-height: 25vh;
-  z-index: 3
+  z-index: 5
 }
 .new-task__container--inside {
   margin: 20px 20px 10px 20px;
@@ -15,7 +15,7 @@
   align-items: center;
   background: $colorCianDark;
   box-shadow: 0 0 0.5em $colorCianDark;
-  border-radius: 5px;
+  border-radius: $bRadius;
 }
 .input__container {
   display: flex;
@@ -31,7 +31,7 @@
   height: 30px;
   background: inherit;
   border: 1px solid rgba($colorWhite, 0.5);
-  border-radius: 5px;
+  border-radius: $bRadius;
   color: $colorWhite;
   box-shadow: 0 0 0.5px $colorWhite;
   font-family: inherit;

@@ -6,8 +6,13 @@
   font-family: 'Roboto Slab', serif;
   font-weight: 400;
 }
-@mixin flexCenterCenter {
+@mixin flexCenterCenter () {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@mixin borderLayers () {
+  border: 1px solid $colorWhite;
+  box-shadow: 0 0 1em;
+  border-radius: $bRadius;
 }
